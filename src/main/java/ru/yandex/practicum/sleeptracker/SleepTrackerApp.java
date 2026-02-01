@@ -14,7 +14,7 @@ import java.util.function.Function;
 public class SleepTrackerApp {
 
     private static final String FILE_NAME = "!finalProject/Sprint_8/java-sleep-tracker/src/main/resources/sleep_log.txt";
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
     private static final String SEPARATOR = ";";
 
     private static final List<Function<List<SleepingSession>, SleepAnalysisResult>> FUNCTIONS_LIST = List.of(

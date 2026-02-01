@@ -13,9 +13,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static main.java.ru.yandex.practicum.sleeptracker.SleepTrackerApp.FORMATTER;
+
 public class FunctionsTest {
 
-    final static public DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
     private List<SleepingSession> sleepingSessions;
 
     @BeforeEach

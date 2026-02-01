@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 
-import static test.java.ru.yandex.practicum.sleeptracker.FunctionsTest.FORMATTER;
+import static main.java.ru.yandex.practicum.sleeptracker.SleepTrackerApp.FORMATTER;
 
 public class SleepingSessionTest {
 
