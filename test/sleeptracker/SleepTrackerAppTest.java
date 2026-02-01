@@ -17,9 +17,7 @@ import java.util.Optional;
 
 public class SleepTrackerAppTest {
 
-    private DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
-    private List<SleepingSession> sleepingSessions;
-
+    private final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
 
     @Test
     public void testSleepTrackerAppTestParseLine() {
@@ -65,7 +63,7 @@ public class SleepTrackerAppTest {
 
         SleepTrackerApp tracker = new SleepTrackerApp();
 
-        sleepingSessions = new ArrayList<>();
+        List<SleepingSession> sleepingSessions = new ArrayList<>();
         sleepingSessions.add(new SleepingSession(LocalDateTime.parse("06.10.25 23:30", FORMATTER),
                 LocalDateTime.parse("07.10.25 05:50", FORMATTER), SleepQuality.BAD)); // продолжительность 380 / голубь
 
