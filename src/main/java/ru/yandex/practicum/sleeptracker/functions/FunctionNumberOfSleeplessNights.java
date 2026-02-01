@@ -20,7 +20,7 @@ public class FunctionNumberOfSleeplessNights implements Function<List<SleepingSe
         int allPeriods = Period.between(startPeriod, endPeriod).getDays() + 1;
 
         if (sleepingSessions.getFirst().startSleepingSession().getHour() < 12) {
-            allPeriods ++;
+            allPeriods++;
         }
 
         List<SleepingSession> sleepNights = sleepingSessions.stream()
