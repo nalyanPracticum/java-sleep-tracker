@@ -1,4 +1,4 @@
-package sleeptracker;
+package test.java.ru.yandex.practicum.sleeptracker;
 
 import main.java.ru.yandex.practicum.sleeptracker.SleepAnalysisResult;
 import org.junit.jupiter.api.Assertions;

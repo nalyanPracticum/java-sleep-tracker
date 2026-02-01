@@ -1,4 +1,4 @@
-package sleeptracker;
+package test.java.ru.yandex.practicum.sleeptracker;
 
 import main.java.ru.yandex.practicum.sleeptracker.SleepQuality;
 import main.java.ru.yandex.practicum.sleeptracker.SleepingSession;
@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 
-import static sleeptracker.FunctionsTest.FORMATTER;
+import static test.java.ru.yandex.practicum.sleeptracker.FunctionsTest.FORMATTER;
 
 public class SleepingSessionTest {
 

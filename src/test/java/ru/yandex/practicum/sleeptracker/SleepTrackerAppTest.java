@@ -1,11 +1,9 @@
-package sleeptracker;
+package test.java.ru.yandex.practicum.sleeptracker;
 
 import main.java.ru.yandex.practicum.sleeptracker.SleepAnalysisResult;
 import main.java.ru.yandex.practicum.sleeptracker.SleepQuality;
 import main.java.ru.yandex.practicum.sleeptracker.SleepTrackerApp;
 import main.java.ru.yandex.practicum.sleeptracker.SleepingSession;
-import main.java.ru.yandex.practicum.sleeptracker.functions.FunctionMinSessionDuration;
-import main.java.ru.yandex.practicum.sleeptracker.functions.FunctionOfCountingSessions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
