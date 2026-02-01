@@ -15,7 +15,7 @@ import java.util.List;
 
 public class FunctionsTest {
 
-    final public static DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
+    final static public DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
     private List<SleepingSession> sleepingSessions;
 
     @BeforeEach
