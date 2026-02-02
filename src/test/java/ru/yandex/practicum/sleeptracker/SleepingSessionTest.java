@@ -6,12 +6,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-import static main.java.ru.yandex.practicum.sleeptracker.SleepTrackerApp.FORMATTER;
 
 public class SleepingSessionTest {
 
-    SleepingSession session = new SleepingSession(LocalDateTime.parse("01.10.25 23:15", FORMATTER), LocalDateTime.parse("02.10.25 07:30", FORMATTER), SleepQuality.GOOD);
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
+    private static final SleepingSession session = new SleepingSession(LocalDateTime.parse("01.10.25 23:15", FORMATTER), LocalDateTime.parse("02.10.25 07:30", FORMATTER), SleepQuality.GOOD);
 
 
     @Test

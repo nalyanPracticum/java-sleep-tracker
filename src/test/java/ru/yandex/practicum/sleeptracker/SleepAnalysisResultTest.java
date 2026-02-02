@@ -9,18 +9,18 @@ public class SleepAnalysisResultTest {
     @Test
     public void testSleepAnalysisResultGetResultStringResult() {
         SleepAnalysisResult functionsResult = new SleepAnalysisResult("", "голубь");
-        Assertions.assertEquals("голубь", functionsResult.getResult());
+        Assertions.assertEquals("голубь", functionsResult.result());
     }
 
     @Test
     public void testSleepAnalysisResultGetResultIntegerResult() {
         SleepAnalysisResult functionsResult = new SleepAnalysisResult("", 15);
-        Assertions.assertEquals(15, functionsResult.getResult());
+        Assertions.assertEquals(15, functionsResult.result());
     }
 
     @Test
     public void testSleepAnalysisResultGetResultLongResult() {
         SleepAnalysisResult functionsResult = new SleepAnalysisResult("", 380L);
-        Assertions.assertEquals(380L, functionsResult.getResult());
+        Assertions.assertEquals(380L, functionsResult.result());
     }
 }

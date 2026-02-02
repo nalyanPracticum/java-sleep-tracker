@@ -9,13 +9,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import static main.java.ru.yandex.practicum.sleeptracker.SleepTrackerApp.FORMATTER;
 
 public class FunctionsTest {
 
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
     private List<SleepingSession> sleepingSessions;
 
     @BeforeEach
@@ -39,7 +40,7 @@ public class FunctionsTest {
 
         SleepAnalysisResult result = new FunctionOfCountingSessions().apply(sleepingSessions);
 
-        Assertions.assertEquals(4, result.getResult());
+        Assertions.assertEquals(4, result.result());
     }
 
     @Test
@@ -47,7 +48,7 @@ public class FunctionsTest {
 
         SleepAnalysisResult result = new FunctionMinSessionDuration().apply(sleepingSessions);
 
-        Assertions.assertEquals(30L, result.getResult());
+        Assertions.assertEquals(30L, result.result());
     }
 
     @Test
@@ -55,7 +56,7 @@ public class FunctionsTest {
 
         SleepAnalysisResult result = new FunctionMaxSessionDuration().apply(sleepingSessions);
 
-        Assertions.assertEquals(1050L, result.getResult());
+        Assertions.assertEquals(1050L, result.result());
     }
 
     @Test
@@ -63,7 +64,7 @@ public class FunctionsTest {
 
         SleepAnalysisResult result = new FunctionAverageSessionLength().apply(sleepingSessions);
 
-        Assertions.assertEquals(467L, result.getResult());
+        Assertions.assertEquals(467L, result.result());
     }
 
     @Test
@@ -71,7 +72,7 @@ public class FunctionsTest {
 
         SleepAnalysisResult result = new FunctionNumberOfBadSessions().apply(sleepingSessions);
 
-        Assertions.assertEquals(2, result.getResult());
+        Assertions.assertEquals(2, result.result());
     }
 
     @Test
@@ -79,95 +80,95 @@ public class FunctionsTest {
 
         SleepAnalysisResult result = new FunctionNumberOfSleeplessNights().apply(sleepingSessions);
 
-        Assertions.assertEquals(9, result.getResult());
+        Assertions.assertEquals(9, result.result());
     }
 
     @Test
     public void testFunctionNumberOfSleeplessNightsWithSessionBeginnigEarlier12() {
 
-        sleepingSessions.add(0, new SleepingSession(LocalDateTime.parse("05.10.25 11:00", FORMATTER),
+        sleepingSessions.addFirst(new SleepingSession(LocalDateTime.parse("05.10.25 11:00", FORMATTER),
                 LocalDateTime.parse("05.10.25 12:50", FORMATTER), SleepQuality.NORMAL)); // продолжительность 380
 
         SleepAnalysisResult result = new FunctionNumberOfSleeplessNights().apply(sleepingSessions);
 
-        Assertions.assertEquals(11, result.getResult());
+        Assertions.assertEquals(11, result.result());
     }
 
     @Test
     public void testFunctionNumberOfSleeplessNightsWithSessionBeginnigTo12() {
 
-        sleepingSessions.add(0, new SleepingSession(LocalDateTime.parse("05.10.25 12:00", FORMATTER),
+        sleepingSessions.addFirst(new SleepingSession(LocalDateTime.parse("05.10.25 12:00", FORMATTER),
                 LocalDateTime.parse("05.10.25 12:50", FORMATTER), SleepQuality.NORMAL)); // продолжительность 380
 
         SleepAnalysisResult result = new FunctionNumberOfSleeplessNights().apply(sleepingSessions);
 
-        Assertions.assertEquals(10, result.getResult());
+        Assertions.assertEquals(10, result.result());
     }
 
     @Test
     public void testFunctionNumberOfSleeplessNightsWithSessionBeginAndEndToNight() {
 
-        sleepingSessions.add(0, new SleepingSession(LocalDateTime.parse("06.10.25 01:00", FORMATTER),
+        sleepingSessions.addFirst(new SleepingSession(LocalDateTime.parse("06.10.25 01:00", FORMATTER),
                 LocalDateTime.parse("06.10.25 05:00", FORMATTER), SleepQuality.NORMAL)); // продолжительность 380
 
         SleepAnalysisResult result = new FunctionNumberOfSleeplessNights().apply(sleepingSessions);
 
-        Assertions.assertEquals(9, result.getResult());
+        Assertions.assertEquals(9, result.result());
     }
 
     @Test
     public void testFunctionNumberOfSleeplessNightsWithSessionBeginEarler24EndToNight() {
 
-        sleepingSessions.add(0, new SleepingSession(LocalDateTime.parse("05.10.25 23:50", FORMATTER),
+        sleepingSessions.addFirst(new SleepingSession(LocalDateTime.parse("05.10.25 23:50", FORMATTER),
                 LocalDateTime.parse("06.10.25 05:00", FORMATTER), SleepQuality.NORMAL)); // продолжительность 380
 
         SleepAnalysisResult result = new FunctionNumberOfSleeplessNights().apply(sleepingSessions);
 
-        Assertions.assertEquals(9, result.getResult());
+        Assertions.assertEquals(9, result.result());
     }
 
     @Test
     public void testFunctionNumberOfSleeplessNightsWithSessionBeginLater24EndLater6() {
 
-        sleepingSessions.add(0, new SleepingSession(LocalDateTime.parse("06.10.25 01:00", FORMATTER),
+        sleepingSessions.addFirst(new SleepingSession(LocalDateTime.parse("06.10.25 01:00", FORMATTER),
                 LocalDateTime.parse("06.10.25 07:00", FORMATTER), SleepQuality.NORMAL)); // продолжительность 380
 
         SleepAnalysisResult result = new FunctionNumberOfSleeplessNights().apply(sleepingSessions);
 
-        Assertions.assertEquals(9, result.getResult());
+        Assertions.assertEquals(9, result.result());
     }
 
     @Test
     public void testFunctionNumberOfSleeplessNightsWithSessionBegin24End6() {
 
-        sleepingSessions.add(0, new SleepingSession(LocalDateTime.parse("06.10.25 00:00", FORMATTER),
+        sleepingSessions.addFirst(new SleepingSession(LocalDateTime.parse("06.10.25 00:00", FORMATTER),
                 LocalDateTime.parse("06.10.25 06:00", FORMATTER), SleepQuality.NORMAL)); // продолжительность 380
 
         SleepAnalysisResult result = new FunctionNumberOfSleeplessNights().apply(sleepingSessions);
 
-        Assertions.assertEquals(9, result.getResult());
+        Assertions.assertEquals(9, result.result());
     }
 
     @Test
     public void testFunctionNumberOfSleeplessNightsWithSessionBeginEndofNight() {
 
-        sleepingSessions.add(0, new SleepingSession(LocalDateTime.parse("06.10.25 05:59", FORMATTER),
+        sleepingSessions.addFirst(new SleepingSession(LocalDateTime.parse("06.10.25 05:59", FORMATTER),
                 LocalDateTime.parse("06.10.25 06:00", FORMATTER), SleepQuality.NORMAL)); // продолжительность 380
 
         SleepAnalysisResult result = new FunctionNumberOfSleeplessNights().apply(sleepingSessions);
 
-        Assertions.assertEquals(9, result.getResult());
+        Assertions.assertEquals(9, result.result());
     }
 
     @Test
     public void testFunctionNumberOfSleeplessNightsWithSessionBeginAfterNight() {
 
-        sleepingSessions.add(0, new SleepingSession(LocalDateTime.parse("06.10.25 06:00", FORMATTER),
+        sleepingSessions.addFirst(new SleepingSession(LocalDateTime.parse("06.10.25 06:00", FORMATTER),
                 LocalDateTime.parse("06.10.25 06:30", FORMATTER), SleepQuality.NORMAL)); // продолжительность 380
 
         SleepAnalysisResult result = new FunctionNumberOfSleeplessNights().apply(sleepingSessions);
 
-        Assertions.assertEquals(10, result.getResult());
+        Assertions.assertEquals(10, result.result());
     }
 
     @Test
@@ -187,7 +188,7 @@ public class FunctionsTest {
 
         SleepAnalysisResult result = new FunctionUsersChronotype().apply(sleepingSessions);
 
-        Assertions.assertEquals("голубь", result.getResult());
+        Assertions.assertEquals("голубь", result.result());
     }
 
     @Test
@@ -210,7 +211,7 @@ public class FunctionsTest {
 
         SleepAnalysisResult result = new FunctionUsersChronotype().apply(sleepingSessions);
 
-        Assertions.assertEquals("сова", result.getResult());
+        Assertions.assertEquals("сова", result.result());
     }
 
     @Test
@@ -233,7 +234,7 @@ public class FunctionsTest {
 
         SleepAnalysisResult result = new FunctionUsersChronotype().apply(sleepingSessions);
 
-        Assertions.assertEquals("жаворонок", result.getResult());
+        Assertions.assertEquals("жаворонок", result.result());
     }
 
 

@@ -8,14 +8,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static main.java.ru.yandex.practicum.sleeptracker.SleepTrackerApp.FORMATTER;
-
-
 public class SleepTrackerAppTest {
+
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
 
     @Test
     public void testSleepTrackerAppTestParseLine() {
@@ -70,7 +70,7 @@ public class SleepTrackerAppTest {
         Object[] expectedResult = {1, 380L, 380L, 380L, 1, 1,"голубь"};
 
         for (int i = 0; i < expectedResult.length; i++) {
-            Assertions.assertEquals(expectedResult[i], results.get(i).getResult());
+            Assertions.assertEquals(expectedResult[i], results.get(i).result());
         }
     }
 }

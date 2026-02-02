@@ -10,7 +10,7 @@ import java.util.function.Function;
 
 public class FunctionNumberOfSleeplessNights implements Function<List<SleepingSession>, SleepAnalysisResult> {
 
-    String title = "Количество бессонных ночей";
+    private final String title = "Количество бессонных ночей";
 
     @Override
     public SleepAnalysisResult apply(List<SleepingSession> sleepingSessions) {
